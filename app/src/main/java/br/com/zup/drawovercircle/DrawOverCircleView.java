@@ -1,5 +1,6 @@
 package br.com.zup.drawovercircle;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -42,13 +43,14 @@ public class DrawOverCircleView extends View {
         mCirclePaint.setStrokeWidth(1);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         float radius = (mCircleRect.width() / 2);
         float cx = mCircleRect.centerX();
         float cy = mCircleRect.centerY();
-        float angle = (float) Math.toRadians(135); // TODO pass angle through param
+        float angle = (float) Math.toRadians(35); // TODO pass angle through param
         float scaleMarkSize = radius - getResources().getDisplayMetrics().density * 8;
 
         canvas.save();
@@ -58,7 +60,7 @@ public class DrawOverCircleView extends View {
         float xPos = (float) (cx + radius * Math.sin(angle));
         float yPos = (float) (cy - radius * Math.cos(angle));
 
-        canvas.drawText(String.format("%.0f", Math.toDegrees(angle)) + " Jeferson Viado", xPos, yPos, mTextPaint);
+        canvas.drawText(String.format("%.0f", Math.toDegrees(angle)) + " Example Text", xPos, yPos, mTextPaint);
 
         float stopX = (float) (cx + (radius - scaleMarkSize) * Math.sin(angle));
         float stopY = (float) (cy - (radius - scaleMarkSize) * Math.cos(angle));
